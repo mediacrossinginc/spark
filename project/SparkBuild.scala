@@ -40,8 +40,8 @@ object SparkBuild extends Build {
   val HBASE_VERSION = "0.94.6"
 
   // Target JVM version
-  val SCALAC_JVM_VERSION = "jvm-1.6"
-  val JAVAC_JVM_VERSION = "1.6"
+  val SCALAC_JVM_VERSION = "jvm-1.7"
+  val JAVAC_JVM_VERSION = "1.7"
 
   lazy val root = Project("root", file("."), settings = rootSettings) aggregate(allProjects: _*)
 
@@ -120,7 +120,7 @@ object SparkBuild extends Build {
 
   def sharedSettings = Defaults.defaultSettings ++ Seq(
     organization       := "org.apache.spark",
-    version            := "0.9.0-incubating",
+    version            := "0.9.0-incubating-mx",
     scalaVersion       := "2.10.3",
     scalacOptions := Seq("-Xmax-classfile-name", "120", "-unchecked", "-deprecation",
       "-target:" + SCALAC_JVM_VERSION),
@@ -263,7 +263,7 @@ object SparkBuild extends Build {
         "net.liftweb"             %% "lift-json"        % "2.5.1"  excludeAll(excludeNetty),
         "it.unimi.dsi"             % "fastutil"         % "6.4.4",
         "colt"                     % "colt"             % "1.2.0",
-        "org.apache.mesos"         % "mesos"            % "0.13.0",
+        "org.apache.mesos"         % "mesos"            % "0.17.0",
         "net.java.dev.jets3t"      % "jets3t"           % "0.7.1",
         "org.apache.derby"         % "derby"            % "10.4.2.0"                     % "test",
         "org.apache.hadoop"        % "hadoop-client"    % hadoopVersion excludeAll(excludeJackson, excludeNetty, excludeAsm, excludeCglib),
