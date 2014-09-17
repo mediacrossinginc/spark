@@ -115,7 +115,8 @@ class SqlParser extends StandardTokenParsers with PackratParsers {
   protected val STRING = Keyword("STRING")
   protected val SUM = Keyword("SUM")
   protected val TABLE = Keyword("TABLE")
-  protected val TIMESTAMP = Keyword("TIMESTAMP")
+// We have some older schema using timestamp as a column name, restore this once migrated
+//  protected val TIMESTAMP = Keyword("TIMESTAMP")
   protected val TRUE = Keyword("TRUE")
   protected val UNCACHE = Keyword("UNCACHE")
   protected val UNION = Keyword("UNION")
@@ -364,7 +365,9 @@ class SqlParser extends StandardTokenParsers with PackratParsers {
     literal
 
   protected lazy val dataType: Parser[DataType] =
-    STRING ^^^ StringType | TIMESTAMP ^^^ TimestampType
+    STRING ^^^ StringType
+// We have some older schema using timestamp as a column name, restore this once migrated
+// | TIMESTAMP ^^^ TimestampType
 }
 
 class SqlLexical(val keywords: Seq[String]) extends StdLexical {
